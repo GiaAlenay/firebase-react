@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/authContext";
 // import { Alert } from "./Alert";
 export function Login() {
-  const { signup  } = useAuth();
+  const { login  } = useAuth();
 
   const [user, setUser] = useState({
     email: "",
@@ -17,7 +17,7 @@ export function Login() {
     e.preventDefault();
     setError("");
     try {
-      await signup (user.email, user.password);
+      await login (user.email, user.password);
         navigate("/");
     } catch (error) {
         console.log(error)
@@ -64,13 +64,13 @@ export function Login() {
         </div>
 
         <button  >
-          Register
+          Login
         </button>
       </form>
       <p  >
-        Already have an Account?
-        <Link to="/login"  >
-          Login
+        Do not have an Account?
+        <Link to="/register"  >
+          Register
         </Link>
       </p>
     </div>
