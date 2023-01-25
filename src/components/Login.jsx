@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/authContext";
 // import { Alert } from "./Alert";
 export function Login() {
-  const { login  } = useAuth();
+  const { login ,loginWithGoogle } = useAuth();
 
   const [user, setUser] = useState({
     email: "",
@@ -24,6 +24,11 @@ export function Login() {
       setError(error.message);
     }
   };
+
+  const handlegoogleSignIn=async(e)=>{
+    await loginWithGoogle()
+    navigate("/");
+  }
 
   return (
     <div  >
@@ -67,6 +72,10 @@ export function Login() {
           Login
         </button>
       </form>
+
+      <button onClick={handlegoogleSignIn}>
+        Login with Google
+      </button>
       <p  >
         Do not have an Account?
         <Link to="/register"  >
