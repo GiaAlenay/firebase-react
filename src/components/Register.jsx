@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/authContext";
-// import { Alert } from "./Alert";
+import { Alert } from "./Alert";
 export function Register() {
   const { signup  } = useAuth();
 
@@ -27,7 +27,7 @@ export function Register() {
 
   return (
     <div className="w-full max-w-xs m-auto text-black">
-      {error && (<p>{error}</p>)}
+      {error && <Alert message={error}/>}
 
       <form
         onSubmit={handleSubmit}
